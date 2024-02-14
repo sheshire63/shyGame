@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://ccl705lce2glm"]
+
+[ext_resource type="Script" path="res://Types/Weapon.gd" id="1_8gq83"]
+[ext_resource type="Texture2D" uid="uid://dw2ak8hywgy41" path="res://Textures/weapons/sword.png" id="2_27i3w"]
+
+[resource]
+script = ExtResource("1_8gq83")
+hitbox_offset = Vector2(0, 0)
+hitbox_size = Vector2(32, 4)
+texture = ExtResource("2_27i3w")
+damage = 3.0
+value = 0
+amount = 1

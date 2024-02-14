@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj618q74bihig"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_olw2i"]
+[ext_resource type="Texture2D" uid="uid://ea6wk7ehcb7t" path="res://Textures/sprites/skull.png" id="2_oeuby"]
+[ext_resource type="Script" path="res://Scenes/Player/WeaponHandler.gd" id="3_ia23u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y28aa"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8grhr"]
+radius = 384.0
+
+[node name="Enemy" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_olw2i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y28aa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 10)
+texture = ExtResource("2_oeuby")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 256.0
+
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+shape = SubResource("CircleShape2D_8grhr")
+
+[node name="WeaponHandler" type="Node2D" parent="."]
+script = ExtResource("3_ia23u")
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]

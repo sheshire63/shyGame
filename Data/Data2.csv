@@ -1,0 +1,4 @@
+id,label,texture,value
+wood,Wood,wood.png,3
+tool_hoe,Hoe,farm-tool4.png,50
+tool_water,Watering can,farm-tool2.png,40

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cvc6uxnj61pyw"]
+
+[ext_resource type="Texture2D" uid="uid://n603aacbomlt" path="res://Textures/items/wood.png" id="1_hvfu3"]
+[ext_resource type="Script" path="res://Types/item.gd" id="1_ksm0b"]
+
+[resource]
+script = ExtResource("1_ksm0b")
+name = null
+icon = ExtResource("1_hvfu3")
+quality = 1.0
+tags = null
+inventory = null
