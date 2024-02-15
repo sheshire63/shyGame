@@ -1,5 +1,7 @@
 a prototype RPG framework
 
+demo: https://sheshire.itch.io/shyrpg?password=shy
+
 current functions
   - player movement
   - items
