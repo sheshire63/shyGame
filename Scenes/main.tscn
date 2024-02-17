@@ -196,9 +196,11 @@ position = Vector2(-1, 32)
 texture = SubResource("GradientTexture2D_4clg4")
 
 [node name="Player" parent="World/Level" instance=ExtResource("3_si5oi")]
+health = 100.0
 
 [node name="Tree" parent="World/Level" instance=ExtResource("8_xjk45")]
 position = Vector2(-352, 128)
+health = 10.0
 
 [node name="Enemy" parent="World/Level" node_paths=PackedStringArray("points") instance=ExtResource("6_uv6jq")]
 position = Vector2(512, 128)
@@ -244,6 +246,7 @@ item = ExtResource("10_dqxpf")
 script = ExtResource("7_23sij")
 
 [node name="Toolbar" type="HBoxContainer" parent="Hud"]
+visible = false
 custom_minimum_size = Vector2(0, 64)
 anchors_preset = 12
 anchor_top = 1.0

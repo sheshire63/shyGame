@@ -2,3 +2,5 @@
 .godot/
 Textures/
 addons/
+export/
+Tests/

@@ -35,7 +35,7 @@ movie_writer/movie_file="/media/data/Sheshire/Dev/godot4/shyGame/demo/demo.png"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/NodeMove/plugin.cfg")
+enabled=PackedStringArray("res://addons/NodeMove/plugin.cfg", "res://addons/gut/plugin.cfg")
 
 [input]
 
@@ -196,6 +196,7 @@ player_inventory={
 2d_physics/layer_3="Player"
 2d_physics/layer_4="Interactions"
 2d_physics/layer_5="Items"
+2d_physics/layer_6="weapons"
 
 [physics]
 

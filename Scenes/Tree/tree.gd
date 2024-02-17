@@ -30,6 +30,7 @@ func _break() -> void:
 		animation.play("Fell")
 		felled.emit()
 		health = 10.0
+		bar.reset()
 	else:
 		super._break()
 

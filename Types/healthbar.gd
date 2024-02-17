@@ -18,9 +18,10 @@ class_name HealthBar
 		value = new
 		if tween:
 			tween.stop()
-		tween = create_tween()
-		tween.tween_property(self, "modulate", Color.WHITE, 1.0)
-		timer.start()
+		if is_inside_tree():
+			tween = create_tween()
+			tween.tween_property(self, "modulate", Color.WHITE, 1.0)
+			timer.start()
 
 
 # Properties
@@ -28,6 +29,11 @@ var tween: Tween
 var timer := Timer.new()
 
 # Public Functions
+func reset() -> void:
+	tween.stop()
+	timer.stop()
+	modulate = Color.TRANSPARENT
+	value = 1.0
 
 
 # Logic

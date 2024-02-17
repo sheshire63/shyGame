@@ -17,29 +17,40 @@ enum STATE {roam, idle, hunt, attack, flee}
 @onready var navigator := $NavigationAgent2D
 @onready var weapon_handler := $WeaponHandler
 # Exported Variables
-@export var weapon: Weapon
+@export var weapon: Weapon:
+	set(new):
+		weapon = new
+		attack_reach = Global.UNIT / 2 +  weapon.get_range()
 
 # Properties
 var state := STATE.idle:
 	set(new):
-		print(self, new)
+		var old_state = state
 		state = new
+		match old_state:
+			STATE.attack:
+				weapon_handler.auto = false
 		match new:
 			STATE.roam:
 				_nav_to_random()
 			STATE.hunt:
 				_nav_to_target()
+			STATE.attack:
+				weapon_handler.auto = true
 
 var enemies_nearby: Array[Entity] = []
 var enemies_visible: Array[Entity] = []
 var current_target: Entity
+var attack_reach := 0.0
+
 # Public Functions
 
 
 # Logic
 
 func _ready() -> void:
-	weapon_handler.weapon = weapon
+	super()
+	#weapon_handler.weapon = weapon
 	state = state #to update the state
 
 	navigator.target_reached.connect(_nav_to_random)
@@ -52,6 +63,9 @@ func _process(_delta: float) -> void:
 		STATE.idle:
 			if randf() <= 0.1:
 				state = STATE.roam
+		STATE.hunt:
+			if is_in_attack_reach():
+				state = STATE.attack
 
 
 func _physics_process(_delta: float) -> void:
@@ -69,14 +83,15 @@ func _physics_process(_delta: float) -> void:
 
 	_nav_to_target()
 
-	var target_distance := Global.UNIT
 	match state:
 		STATE.roam, STATE.hunt:
 			direction = global_position.direction_to(navigator.get_next_path_position())
 		STATE.attack:
+			weapon_handler.rotation = global_position.angle_to_point(current_target.global_position)
 			# we want to use a calucalted vector based on distance to the target and to other allies
 			direction = global_position.direction_to(current_target.global_position)
-			direction *= global_position.distance_to(current_target.global_position) + target_distance
+			if !weapon_handler.is_attacking:
+				direction *= global_position.distance_to(current_target.global_position) - attack_reach
 			direction = direction.normalized()
 
 	velocity = direction * Global.UNIT * speed
@@ -91,7 +106,10 @@ func _on_vision_body_entered(body: Node2D) -> void:
 func _on_vision_body_exited(body: Node2D) -> void:
 	if body is Entity:
 		enemies_nearby.erase(body)
-
+		enemies_visible.erase(body)
+		if body == current_target:
+			current_target = null
+			state = STATE.idle
 
 func _on_navigation_agent_2d_navigation_finished() -> void:
 	match state:
@@ -148,3 +166,6 @@ func _can_see_target(target: CollisionObject2D) -> bool:
 	if collision and collision.collider == target:
 		return true
 	return false
+
+func is_in_attack_reach() -> bool:
+	return global_position.distance_to(current_target.global_position) < attack_reach

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://d052yyuita57n"]
+[gd_scene load_steps=62 format=3 uid="uid://d052yyuita57n"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_tt3o0"]
 [ext_resource type="Texture2D" uid="uid://bqw1y8tu1wad8" path="res://Textures/witchKitty_curiousIdleBreaker.png" id="2_8g5xm"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/MovingSprite.gd" id="5_wr4bw"]
 [ext_resource type="Script" path="res://Scenes/Player/InteractArea.gd" id="6_6fsli"]
 [ext_resource type="Script" path="res://Scenes/Player/ItemHandler.gd" id="6_ur1kw"]
-[ext_resource type="Texture2D" uid="uid://dw2ak8hywgy41" path="res://Textures/weapons/sword.png" id="8_51w1h"]
+[ext_resource type="Resource" uid="uid://ccl705lce2glm" path="res://Data/sword.tres" id="9_gra55"]
 [ext_resource type="Script" path="res://Types/Inventory.gd" id="10_1gkyk"]
 [ext_resource type="Script" path="res://Scenes/Player/WeaponHandler.gd" id="10_wydtu"]
 [ext_resource type="Script" path="res://Scenes/Player/PickUp.gd" id="12_xttxe"]
@@ -393,147 +393,12 @@ size = Vector2(32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_kl48w"]
 radius = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldmt8"]
-size = Vector2(4, 4)
-
-[sub_resource type="Animation" id="Animation_7ovf1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../WeaponHandler/Area2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../WeaponHandler/Area2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../WeaponHandler/Area2D/Sprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../WeaponHandler/Area2D:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../WeaponHandler/Area2D:monitorable")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_hakkc"]
-resource_name = "Swing"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../WeaponHandler/Area2D:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-2.23402, 2.23402]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../WeaponHandler/Area2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../WeaponHandler/Area2D/Sprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../WeaponHandler/Area2D:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../WeaponHandler/Area2D:monitorable")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn6i5"]
-_data = {
-"RESET": SubResource("Animation_7ovf1"),
-"Swing": SubResource("Animation_hakkc")
-}
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_jinru"]
 radius = 16.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
-collision_layer = 6
+collision_layer = 38
 script = ExtResource("1_tt3o0")
 speed = 5.0
 
@@ -572,27 +437,7 @@ shape = SubResource("CircleShape2D_kl48w")
 [node name="WeaponHandler" type="Node2D" parent="FacingRot"]
 position = Vector2(16, 8)
 script = ExtResource("10_wydtu")
-
-[node name="Area2D" type="Area2D" parent="FacingRot/WeaponHandler"]
-collision_layer = 2
-collision_mask = 2
-input_pickable = false
-monitoring = false
-monitorable = false
-
-[node name="Sprite2D" type="Sprite2D" parent="FacingRot/WeaponHandler/Area2D"]
-visible = false
-texture = ExtResource("8_51w1h")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FacingRot/WeaponHandler/Area2D"]
-position = Vector2(16, 0)
-shape = SubResource("RectangleShape2D_ldmt8")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FacingRot/WeaponHandler"]
-root_node = NodePath("../../ItemHandler")
-libraries = {
-"": SubResource("AnimationLibrary_tn6i5")
-}
+weapon = ExtResource("9_gra55")
 
 [node name="Inventory" type="GridContainer" parent="."]
 columns = 10
@@ -608,4 +453,3 @@ shape = SubResource("CircleShape2D_jinru")
 
 [connection signal="body_entered" from="FacingRot/Interact" to="FacingRot/Interact" method="_on_body_entered"]
 [connection signal="body_exited" from="FacingRot/Interact" to="FacingRot/Interact" method="_on_body_exited"]
-[connection signal="body_entered" from="FacingRot/WeaponHandler/Area2D" to="FacingRot/WeaponHandler" method="_on_area_2d_body_entered"]

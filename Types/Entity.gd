@@ -31,6 +31,8 @@ func die() -> void:
 	destroyed.emit()
 	queue_free()
 
+func damage(amount := 0.0) -> void:
+	health -= amount
 
 # Logic
 func _ready() -> void:

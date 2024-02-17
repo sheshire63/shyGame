@@ -26,6 +26,7 @@ class_name Player
 # Logic
 
 func _ready() -> void:
+	super()
 	Global.players.append(self)
 
 
@@ -43,6 +44,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_inventory"):
 		inventory.visible = !inventory.visible
 
+
+func _exit_tree() -> void:
+	Global.players.erase(self)
 
 
 
